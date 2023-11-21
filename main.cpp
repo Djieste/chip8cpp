@@ -38,6 +38,7 @@ public:
 	address compteurProgramme{ ADRESSE_DEBUT };
 	address registreIndex{ 0 };
 	stack<address> stack;
+	byte stackPointer;
 
 public:
 	bool run(const string& fichierNomRom)
