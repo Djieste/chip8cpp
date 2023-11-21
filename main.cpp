@@ -36,8 +36,8 @@ public:
 	byte registres[16] { 0 };
 	byte memoire[4096] { 0 };
 	address compteurProgramme{ ADRESSE_DEBUT };
-	int16_t registreIndex{ 0 };
-	stack<int16_t> stack;
+	address registreIndex{ 0 };
+	stack<address> stack;
 
 public:
 	bool run(const string& fichierNomRom)
