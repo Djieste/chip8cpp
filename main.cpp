@@ -9,11 +9,11 @@
 
 using namespace std;
 
-class CPU
+class Processeur
 {
 public:
-	using byte = uint8_t;
-	using address = uint16_t;
+	using octet = uint8_t;
+	using addresse = uint16_t;
 public:
 	const unsigned int ADRESSE_DEBUT = 0x200;
 public:
@@ -33,33 +33,33 @@ public:
 	const static int VD = 13;
 	const static int VE = 14;
 	const static int VF = 15;
-	byte registres[16] { 0 };
-	byte memoire[4096] { 0 };
-	address compteurProgramme{ ADRESSE_DEBUT };
-	address registreIndex{ 0 };
-	stack<address> stack;
-	byte stackPointer;
+	octet registres[16] { 0 };
+	octet memoire[4096] { 0 };
+	addresse compteurProgramme{ ADRESSE_DEBUT };
+	addresse registreIndex{ 0 };
+	stack<addresse> pile;
+	octet pointeurDePile;
 
 public:
-	bool run(const string& fichierNomRom)
+	bool executer(const string& fichierNomRom)
 	{
-		if (!load(fichierNomRom))
+		if (!charger(fichierNomRom))
 			return false;
 	}
 		
-	bool load(const string& fichierNomRom)
+	bool charger(const string& fichierNomRom)
 	{
-		std::ifstream file(fichierNomRom, std::ios::binary | std::ios::ate);
-		if (!file.is_open())
+		std::ifstream fichier(fichierNomRom, std::ios::binary | std::ios::ate);
+		if (!fichier.is_open())
 			return false;
 
 		// Get size of file and allocate a buffer to hold the contents
-		std::streampos size = file.tellg();
+		std::streampos taille = fichier.tellg();
 
 		// Go back to the beginning of the file and fill the buffer
-		file.seekg(0, std::ios::beg);
-		file.read((char*)memoire + ADRESSE_DEBUT, size);
-		file.close();
+		fichier.seekg(0, std::ios::beg);
+		fichier.read((char*)memoire + ADRESSE_DEBUT, taille);
+		fichier.close();
 		return true;
 	}
 };
@@ -77,8 +77,8 @@ int main(int argc, char * argv[])
 	}
 	else
 	{
-		CPU cpu;
-		cpu.run(argv[1]);
+		Processeur processeur;
+		processeur.executer(argv[1]);
 		return 0;
 	}
 }
