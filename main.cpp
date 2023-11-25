@@ -19,22 +19,6 @@ public:
 public:
 	const unsigned int ADRESSE_DEBUT = 0x200;
 public:
-	const static int V0 = 0;
-	const static int V1 = 1;
-	const static int V2 = 2;
-	const static int V3 = 3;
-	const static int V4 = 4;
-	const static int V5 = 5;
-	const static int V6 = 6;
-	const static int V7 = 7;
-	const static int V8 = 8;
-	const static int V9 = 9;
-	const static int VA = 10;
-	const static int VB = 11;
-	const static int VC = 12;
-	const static int VD = 13;
-	const static int VE = 14;
-	const static int VF = 15;
 	octet registres[16] { 0 };
 	octet memoire[4096] { 0 };
 	addresse compteurProgramme{ ADRESSE_DEBUT };
