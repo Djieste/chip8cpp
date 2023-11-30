@@ -1,5 +1,6 @@
 // Tutorial: https://austinmorlan.com/posts/chip8_emulator/
 // Test ROMs: https://github.com/dmatlack/chip8/tree/master/roms/games
+// SDL 2 configuration in VS 2022: https://lazyfoo.net/tutorials/SDL/01_hello_SDL/windows/msvc2019/index.php
 
 #include <iostream>
 #include <string>
